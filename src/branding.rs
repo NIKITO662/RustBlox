@@ -7,7 +7,7 @@ pub const USER_AGENT: &str = concat!("RustBlox/", env!("CARGO_PKG_VERSION"));
 
 /// Where the news feed is hosted. Create a public GitHub repo, put `news.json` in it,
 /// and point this at the raw file. See docs/NEWS_GUIDE.md.
-pub const NEWS_URL: &str = "https://raw.githubusercontent.com/ItsNiki66/rustblox-news/main/news.json";
+pub const NEWS_URL: &str = "https://raw.githubusercontent.com/NIKITO662/rustblox-news/main/news.json";
 
 /// Discord Rich Presence application ID (https://discord.com/developers/applications).
 /// Leave empty to disable Rich Presence. Upload an art asset named `logo` for the large image.
