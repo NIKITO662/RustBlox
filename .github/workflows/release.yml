@@ -1,0 +1,54 @@
+name: Build and release
+
+on:
+  push:
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Test
+        run: cargo test --release
+
+      - name: Build
+        run: cargo build --release --locked
+
+      - name: Install Inno Setup
+        run: choco install innosetup -y --no-progress
+
+      - name: Build installer
+        shell: pwsh
+        run: |
+          & "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe" installer\setup.iss
+
+      - name: Checksums
+        shell: pwsh
+        run: |
+          Get-ChildItem dist\*.exe | ForEach-Object {
+            $h = (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLower()
+            "$h  $($_.Name)" | Out-File -Append -Encoding ascii dist\SHA256SUMS.txt
+          }
+
+      - name: Copy plain exe next to the installer
+        shell: pwsh
+        run: Copy-Item target\release\rustblox.exe dist\rustblox.exe
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: RustBlox-Windows
+          path: dist/*
+
+      - name: Publish release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+          generate_release_notes: true
