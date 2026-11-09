@@ -54,7 +54,7 @@ begin
   begin
     DataDir := ExpandConstant('{localappdata}\RustBlox');
     if DirExists(DataDir) then
-      if MsgBox('Also delete your RustBlox data (settings, mod packs, the downloaded Roblox client)?', mbConfirmation, MB_YESNO or MB_DEFAULT_NO) = IDYES then
+      if MsgBox('Also delete your RustBlox data (settings, mod packs, the downloaded Roblox client)?', mbConfirmation, MB_YESNO or MB_DEFBUTTON2) = IDYES then
         DelTree(DataDir, True, True, True);
   end;
 end;
