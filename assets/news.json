@@ -1,0 +1,22 @@
+{
+  "latest_launcher": null,
+  "download_url": null,
+  "posts": [
+    {
+      "id": "2026-11-08-welcome",
+      "date": "2026-11-08",
+      "title": "Welcome to RustBlox",
+      "tag": "Announcement",
+      "pinned": true,
+      "body": "RustBlox is a free, community-made launcher for Roblox, built by ItsNiki66.\n\nWhat you get:\n- Automatic Roblox updates on every launch\n- Mod packs with individual on/off switches\n- FPS cap and FastFlag editor\n- Activity tracking with server region and play history\n- Discord Rich Presence\n- A news page where every post stays visible, even the ones you missed\n\nThanks for trying it. Report problems with Tools > Export diagnostics."
+    },
+    {
+      "id": "2026-11-08-mod-packs",
+      "date": "2026-11-08",
+      "title": "How mod packs work",
+      "tag": "Guide",
+      "pinned": false,
+      "body": "Open the Mods tab and press Create pack, or drag a .zip onto the window.\n\nInside a pack, mirror Roblox's folder layout: content, PlatformContent, ExtraContent or shaders.\n\nPacks apply in alphabetical order, so 01_Base loads before 02_Tweaks. Switching a pack off restores the original files on your next launch."
+    }
+  ]
+}
